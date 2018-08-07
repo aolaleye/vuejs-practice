@@ -72,13 +72,11 @@ const app = new Vue({
       type: ''
     },
     methods: {
-      toggleDetails: function(){
-        console.log(media);
+      toggleDetails: function(media){
         media.showDetail = !media.showDetail
       },
       filterList: function(){
         this.type = event.target.value;
-        console.log(this.type);
       }
     },
     computed: {

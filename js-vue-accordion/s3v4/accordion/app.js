@@ -47,6 +47,20 @@ const media = [
       type: 'streaming video',
       contributor: '',
       showDetail: false,
+    },
+    {
+      title: 'Title 1', 
+      description: "A slow-burning Breaking Bad prequel.",
+      type: 'e-book',
+      contributor: '',
+      showDetail: false,
+    },
+    {
+      title: 'Title 2', 
+      description: "A slow-burning Breaking Bad prequel.",
+      type: 'e-book',
+      contributor: '',
+      showDetail: false,
     }
   ]
 
@@ -54,12 +68,28 @@ const app = new Vue({
     el: '#media-list',
     data: {
       title: 'Treehouse Public Library',
-      mediaList: media
+      mediaList: media,
+      type: ''
     },
     methods: {
       toggleDetails: function(media){
         console.log(media);
         media.showDetail = !media.showDetail
+      },
+      filterList: function() {
+        this.type = event.target.value;
+        console.log(this.type);
+      }
+    },
+    computed: {
+      uniqueItemsList: function(){
+        const types = [];
+        this.mediaList.forEach((item) => {
+          if(!types.includes(item.type)) {
+            types.push(item.type);
+          }
+        });
+        return types;
       }
     }
   });
